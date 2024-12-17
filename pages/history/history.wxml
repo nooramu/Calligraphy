@@ -1,0 +1,83 @@
+<!--pages/history/history.wxml-->
+<view class="container">
+  <view class="timeline-container">
+    <!-- 时间轴标题 -->
+    <view class="page-title">
+      <view class="title-decoration left"></view>
+      <text>书法流变</text>
+      <view class="title-decoration right"></view>
+    </view>
+    
+    <!-- 朝代时间轴 -->
+    <scroll-view class="dynasty-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="dynasty-timeline">
+        <view class="timeline-bg"></view>
+        <view class="dynasty-item {{currentDynasty === index ? 'active' : ''}}" 
+              wx:for="{{dynastyList}}" 
+              wx:key="id"
+              bindtap="switchDynasty"
+              data-index="{{index}}">
+          <view class="dynasty-connector"></view>
+          <view class="dynasty-dot-wrapper">
+            <view class="dynasty-dot">
+              <view class="dot-inner"></view>
+            </view>
+          </view>
+          <view class="dynasty-info">
+            <text class="dynasty-name">{{item.name}}</text>
+            <text class="dynasty-year">{{item.year}}</text>
+          </view>
+          <view class="ink-splash {{currentDynasty === index ? 'active' : ''}}"></view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- 当前朝代书法风格详情 -->
+    <view class="style-detail">
+      <view class="style-header">
+        <text class="style-title">{{currentStyle.name}}</text>
+        <text class="style-period">{{currentStyle.period}}</text>
+      </view>
+      
+      <!-- 代表作品展示 -->
+      <scroll-view class="works-scroll" scroll-x>
+        <view class="works-container">
+          <view class="work-item" 
+                wx:for="{{currentStyle.works}}" 
+                wx:key="id"
+                bindtap="previewImage"
+                data-url="{{item.image}}">
+            <image 
+              src="{{item.image}}" 
+              mode="aspectFill" 
+              class="work-image"
+              binderror="handleImageError"
+              data-index="{{index}}"
+            />
+            <view class="work-info">
+              <text class="work-name">{{item.name}}</text>
+              <text class="work-author">{{item.author}}</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+
+      <!-- 风格特点说明 -->
+      <view class="style-features">
+        <view class="feature-title">风格特点</view>
+        <view class="feature-list">
+          <view class="feature-item" wx:for="{{currentStyle.features}}" wx:key="*this">
+            <view class="feature-dot"></view>
+            <text class="feature-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 历史背景 -->
+      <view class="style-background">
+        <view class="background-title">历史背景</view>
+        <text class="background-content">{{currentStyle.background}}</text>
+      </view>
+    </view>
+  </view>
+</view>

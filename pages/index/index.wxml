@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="upload-section">
+      <view class="title">书法风格识别</view>
+      <view class="upload-box" bindtap="chooseImage">
+        <image wx:if="{{tempImagePath}}" src="{{tempImagePath}}" mode="aspectFit" class="preview-image"/>
+        <view wx:else class="upload-placeholder">
+          <image src="/assets/icons/upload.png" class="upload-icon"/>
+          <text>点击上传书法作品</text>
+        </view>
+      </view>
+      
+      <view class="button-group">
+        <button class="analyze-btn {{!tempImagePath ? 'disabled' : ''}}" 
+                bindtap="analyzeStyle" 
+                disabled="{{!tempImagePath}}">
+          开始识别
+        </button>
+        <button class="clear-btn" 
+                bindtap="clearResult" 
+                wx:if="{{tempImagePath || recognitionResult}}">
+          清除
+        </button>
+      </view>
+
+      <!-- 识别结果展示区域 -->
+      <view class="result-section" wx:if="{{recognitionResult}}">
+        <view class="result-card">
+          <view class="result-header">
+            <text class="result-title">识别结果</text>
+            <text class="confidence">置信度：{{recognitionResult.confidence}}%</text>
+          </view>
+          <view class="result-content">
+            <text class="style-label">书法风格：</text>
+            <text class="style-value">{{recognitionResult.styleName}}</text>
+          </view>
+          <view class="style-description">
+            {{recognitionResult.description}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="history-section">
+      <view class="section-title">历史记录</view>
+      <view class="history-list">
+        <view class="history-item" wx:for="{{historyList}}" wx:key="id">
+          <image src="{{item.imagePath}}" mode="aspectFill" class="history-image"/>
+          <view class="history-info">
+            <text class="style-name">{{item.styleName}}</text>
+            <text class="analyze-time">{{item.analyzeTime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

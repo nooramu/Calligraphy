@@ -1,0 +1,69 @@
+<!--pages/gallery/gallery.wxml-->
+<view class="container">
+  <!-- 书体分类标签 -->
+  <view class="category-tabs">
+    <view class="tab {{currentTab === 'all' ? 'active' : ''}}" 
+          bindtap="switchTab" 
+          data-tab="all">
+      全部
+    </view>
+    <view class="tab {{currentTab === 'lishu' ? 'active' : ''}}" 
+          bindtap="switchTab" 
+          data-tab="lishu">
+      隶书
+    </view>
+    <view class="tab {{currentTab === 'kaishu' ? 'active' : ''}}" 
+          bindtap="switchTab" 
+          data-tab="kaishu">
+      楷书
+    </view>
+    <view class="tab {{currentTab === 'xingshu' ? 'active' : ''}}" 
+          bindtap="switchTab" 
+          data-tab="xingshu">
+      行书
+    </view>
+    <view class="tab {{currentTab === 'caoshu' ? 'active' : ''}}" 
+          bindtap="switchTab" 
+          data-tab="caoshu">
+      草书
+    </view>
+    <view class="tab {{currentTab === 'zhuanshu' ? 'active' : ''}}" 
+          bindtap="switchTab" 
+          data-tab="zhuanshu">
+      篆书
+    </view>
+  </view>
+
+  <!-- 作品列表 -->
+  <scroll-view class="works-container" scroll-y>
+    <view class="author-section" wx:for="{{authorWorks}}" wx:key="author">
+      <!-- 作者信息 -->
+      <view class="author-info">
+        <text class="author-name">{{item.author}}</text>
+        <text class="author-dynasty">{{item.dynasty}}</text>
+      </view>
+      <!-- 作者作品列表 -->
+      <scroll-view class="works-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+        <view class="works-list">
+          <view class="work-item" 
+                wx:for="{{item.works}}" 
+                wx:key="id"
+                wx:for-item="work"
+                bindtap="previewWork"
+                data-work="{{work}}">
+            <image src="{{work.image}}" 
+                   mode="aspectFill" 
+                   class="work-image"
+                   binderror="handleImageError"
+                   data-author-index="{{index}}"
+                   data-work-index="{{index}}"/>
+            <view class="work-info">
+              <text class="work-name">{{work.name}}</text>
+              <text class="work-type">{{work.type}}</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,345 @@
+/* pages/history/history.wxss */
+.container {
+  padding: 32rpx;
+  background-color: #F5F5F5;
+  min-height: 100vh;
+}
+
+.timeline-container {
+  width: 100%;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 48rpx 0;
+  position: relative;
+}
+
+.page-title text {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #2C3D4F;
+  padding: 0 40rpx;
+}
+
+.title-decoration {
+  width: 120rpx;
+  height: 24rpx;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+.title-decoration.left {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24'%3E%3Cpath d='M0 12 L120 12' stroke='%238B4513' stroke-width='2' stroke-dasharray='1 4'/%3E%3Cpath d='M100 6 L120 12 L100 18' fill='none' stroke='%238B4513' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.title-decoration.right {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24'%3E%3Cpath d='M0 12 L120 12' stroke='%238B4513' stroke-width='2' stroke-dasharray='1 4'/%3E%3Cpath d='M20 6 L0 12 L20 18' fill='none' stroke='%238B4513' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+/* 朝代时间轴样式 */
+.dynasty-scroll {
+  width: 100%;
+  margin: 60rpx 0;
+  position: relative;
+  height: 240rpx;
+}
+
+.dynasty-timeline {
+  display: inline-flex;
+  padding: 0 40rpx;
+  position: relative;
+  height: 100%;
+}
+
+.timeline-bg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2rpx;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(139, 69, 19, 0.2) 20%, 
+    rgba(139, 69, 19, 0.2) 80%, 
+    transparent 100%
+  );
+}
+
+.dynasty-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 120rpx;
+  position: relative;
+  padding-top: 40rpx;
+  transition: all 0.3s ease;
+}
+
+.dynasty-connector {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120rpx;
+  height: 2rpx;
+  background: #8B4513;
+  opacity: 0.3;
+  transform: translateY(-50%);
+}
+
+.dynasty-dot-wrapper {
+  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.dynasty-dot {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3rpx solid #8B4513;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.dot-inner {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #8B4513;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.dynasty-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.dynasty-name {
+  font-size: 32rpx;
+  color: #2C3D4F;
+  margin-bottom: 8rpx;
+  font-weight: 500;
+}
+
+.dynasty-year {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 水墨效果 */
+.ink-splash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  transform: translate(-50%, -50%) scale(0);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 80c-16.6 0-30-13.4-30-30s13.4-30 30-30 30 13.4 30 30-13.4 30-30 30z' fill='%238B4513' fill-opacity='0.1'/%3E%3C/svg%3E");
+  background-size: contain;
+  opacity: 0;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+/* 激活状态样式 */
+.dynasty-item.active {
+  transform: scale(1.05);
+}
+
+.dynasty-item.active .dynasty-dot {
+  transform: scale(1.2);
+  border-color: #8B4513;
+  box-shadow: 0 0 20rpx rgba(139, 69, 19, 0.2);
+}
+
+.dynasty-item.active .dot-inner {
+  opacity: 1;
+}
+
+.dynasty-item.active .dynasty-name {
+  color: #8B4513;
+  font-weight: bold;
+}
+
+.dynasty-item.active .ink-splash {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.dynasty-item.active .dynasty-info {
+  transform: translateY(-8rpx);
+}
+
+/* 添加hover效果 */
+.dynasty-item:not(.active):hover .dynasty-dot {
+  transform: scale(1.1);
+}
+
+/* 添加动画效果 */
+@keyframes inkDrop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.dynasty-item.active .ink-splash::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  background-size: contain;
+  animation: inkDrop 2s ease-out infinite;
+}
+
+/* 风格详情样式 */
+.style-detail {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.style-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+  padding-bottom: 24rpx;
+  border-bottom: 2rpx solid rgba(139, 69, 19, 0.1);
+}
+
+.style-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #2C3D4F;
+}
+
+.style-period {
+  font-size: 28rpx;
+  color: #8B4513;
+}
+
+/* 代表作品样式 */
+.works-scroll {
+  width: 100%;
+  white-space: nowrap;
+  margin-bottom: 40rpx;
+}
+
+.works-container {
+  display: inline-flex;
+  padding: 16rpx 0;
+}
+
+.work-item {
+  width: 280rpx;
+  margin-right: 24rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.work-image {
+  width: 280rpx;
+  height: 380rpx;
+  background: #F5F5F5;
+}
+
+.work-info {
+  padding: 16rpx;
+}
+
+.work-name {
+  font-size: 28rpx;
+  color: #2C3D4F;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.work-author {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 风格特点样式 */
+.style-features {
+  margin-bottom: 40rpx;
+}
+
+.feature-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2C3D4F;
+  margin-bottom: 24rpx;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.feature-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #8B4513;
+  margin: 12rpx 16rpx 0 0;
+}
+
+.feature-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* 历史背景样式 */
+.style-background {
+  padding-top: 32rpx;
+  border-top: 2rpx solid rgba(139, 69, 19, 0.1);
+}
+
+.background-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2C3D4F;
+  margin-bottom: 24rpx;
+}
+
+.background-content {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.8;
+}

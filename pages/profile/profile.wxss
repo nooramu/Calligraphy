@@ -1,0 +1,141 @@
+/* pages/profile/profile.wxss */
+.container {
+  min-height: 100vh;
+  background: #F5E6D3;  /* 米色背景 */
+  padding: 0 24rpx;
+}
+
+/* 用户信息卡片 */
+.user-card {
+  background: #A6866A;  /* 棕褐色背景 */
+  padding: 40rpx 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(166, 134, 106, 0.2);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-right: 32rpx;
+}
+
+.avatar {
+  width: 228rpx;
+  height: 228rpx;
+  border-radius: 114rpx;
+  margin-right: 32rpx;
+  border: 6rpx solid #DCC7B0;  /* 浅棕色边框 */
+}
+
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.username {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #F5E6D3;  /* 米色文字 */
+  margin-bottom: 12rpx;
+}
+
+.user-desc {
+  font-size: 28rpx;
+  color: #DCC7B0;  /* 浅棕色文字 */
+}
+
+.login-btn {
+  padding: 20rpx 40rpx;
+  background: #8C4B3C;  /* 深红褐色 */
+  color: #F5E6D3;  /* 米色文字 */
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  min-width: 160rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(140, 75, 60, 0.2);
+}
+
+/* 数据统计栏 */
+.stats-bar {
+  background: #DCC7B0;  /* 浅棕色背景 */
+  padding: 22rpx 0;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 24rpx;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(166, 134, 106, 0.1);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 32rpx;
+  flex: 1;
+}
+
+.stat-num {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #8C4B3C;  /* 深红褐色 */
+  margin-bottom: 12rpx;
+}
+
+.stat-label {
+  font-size: 26rpx;
+  color: #A6866A;  /* 棕褐色 */
+}
+
+/* 功能菜单列表 */
+.menu-list {
+  margin-top: 24rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.menu-group {
+  background: #DCC7B0;  /* 浅棕色背景 */
+  margin-bottom: 24rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(166, 134, 106, 0.1);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 32rpx;
+  border-bottom: 1px solid #E8D5C0;  /* 更浅的分隔线 */
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 32rpx;
+  opacity: 0.8;
+}
+
+.menu-text {
+  flex: 1;
+  font-size: 34rpx;
+  color: #8C4B3C;  /* 深红褐色 */
+}
+
+.arrow-icon {
+  width: 36rpx;
+  height: 36rpx;
+  opacity: 0.4;
+}

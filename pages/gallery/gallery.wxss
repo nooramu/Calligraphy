@@ -1,0 +1,113 @@
+/* pages/gallery/gallery.wxss */
+.container {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding: 32rpx;
+}
+
+/* 分类标签样式 */
+.category-tabs {
+  display: flex;
+  padding: 20rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tab {
+  display: inline-block;
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+  color: #666666;
+  border-radius: 32rpx;
+  transition: all 0.3s ease;
+  margin-right: 16rpx;
+}
+
+.tab:last-child {
+  margin-right: 0;
+}
+
+.tab.active {
+  background: #2C3D4F;
+  color: #FFFFFF;
+}
+
+/* 作者区域样式 */
+.author-section {
+  margin-bottom: 48rpx;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.author-info {
+  margin-bottom: 24rpx;
+  border-left: 8rpx solid #8B4513;
+  padding-left: 16rpx;
+}
+
+.author-name {
+  font-size: 32rpx;
+  color: #2C3D4F;
+  font-weight: bold;
+  margin-right: 16rpx;
+}
+
+.author-dynasty {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 作品列表样式 */
+.works-scroll {
+  width: 100%;
+}
+
+.works-list {
+  display: flex;
+  padding: 16rpx 0;
+}
+
+.work-item {
+  width: 280rpx;
+  margin-right: 24rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.work-item:last-child {
+  margin-right: 0;
+}
+
+.work-image {
+  width: 280rpx;
+  height: 380rpx;
+  background: #F5F5F5;
+}
+
+.work-info {
+  padding: 16rpx;
+}
+
+.work-name {
+  font-size: 28rpx;
+  color: #2C3D4F;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.work-type {
+  font-size: 24rpx;
+  color: #666666;
+}

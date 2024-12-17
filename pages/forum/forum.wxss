@@ -1,0 +1,263 @@
+/* pages/forum/forum.wxss */
+.container {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding-bottom: 120rpx;
+}
+
+/* 帖子列表样式 */
+.posts-container {
+  padding: 0;
+}
+
+.post-item {
+  background: #FFFFFF;
+  padding: 20rpx;
+  margin-bottom: 1px;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* 帖子头部样式 */
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.username {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+  display: block;
+}
+
+.post-time {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 帖子内容样式 */
+.post-content {
+  margin-bottom: 20rpx;
+}
+
+.post-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.post-text {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.6;
+  display: block;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8rpx;
+  margin-top: 16rpx;
+}
+
+.post-image {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 8rpx;
+}
+
+/* 帖子底部样式 */
+.post-footer {
+  display: flex;
+  justify-content: space-around;
+  border-top: 2rpx solid #F5F5F5;
+  padding-top: 20rpx;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  color: #333333;
+  font-size: 26rpx;
+  padding: 8rpx 16rpx;
+  background: #F5F5F5;
+  border-radius: 32rpx;
+}
+
+.action-icon {
+  width: 40rpx;
+  height: 40rpx;
+  opacity: 0.9;
+}
+
+/* 发帖按钮样式 */
+.post-btn {
+  position: fixed;
+  right: 48rpx;
+  bottom: 48rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: #E74C3C;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 16rpx rgba(231, 76, 60, 0.4);
+}
+
+.post-icon {
+  width: 48rpx;
+  height: 48rpx;
+  filter: brightness(0) invert(1);
+}
+
+/* 发帖弹窗样式 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 90%;
+  max-height: 90vh;
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.close-icon {
+  width: 48rpx;
+  height: 48rpx;
+  padding: 8rpx;
+  background: #F5F5F5;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.post-title-input {
+  width: 100%;
+  height: 80rpx;
+  border: 2rpx solid #CCCCCC;
+  border-radius: 8rpx;
+  padding: 0 16rpx;
+  margin-bottom: 24rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.post-content-input {
+  width: 100%;
+  height: 300rpx;
+  border: 2rpx solid #CCCCCC;
+  border-radius: 8rpx;
+  padding: 16rpx;
+  margin-bottom: 24rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.image-uploader {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.image-item {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.image-item image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8rpx;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -16rpx;
+  right: -16rpx;
+  width: 44rpx;
+  height: 44rpx;
+  background: #E74C3C;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.upload-btn {
+  border: none;
+  background: #F5F5F5;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+}
+
+.upload-btn image {
+  width: 56rpx;
+  height: 56rpx;
+  opacity: 0.8;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  background: #E74C3C;
+  color: #FFFFFF;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(231, 76, 60, 0.3);
+}

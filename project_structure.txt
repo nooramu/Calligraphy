@@ -1,0 +1,12 @@
+calligraphy-app/
+├── pages/
+│   ├── index/                # 首页
+│   ├── history/             # 书法风格发展页
+│   ├── gallery/             # 书法作品页
+│   ├── forum/               # 书法交流论坛
+│   └── profile/             # 个人中心
+├── components/              # 公共组件
+├── utils/                   # 工具函数
+├── services/               # API服务
+├── assets/                 # 静态资源
+└── app.json                # 全局配置 
