@@ -1,190 +1,171 @@
 /**index.wxss**/
 page {
-  height: 100vh;
+  background: #8B0016;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 .scrollarea {
   flex: 1;
-  overflow-y: hidden;
+  overflow-y: auto;
+  background: #8B0016;
+  min-height: 100vh;
 }
 
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
-  width: 80%;
-}
-
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
-
-.avatar-wrapper {
-  padding: 0;
-  width: 56px !important;
-  border-radius: 8px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-.avatar {
-  display: block;
-  width: 56px;
-  height: 56px;
-}
-
-.nickname-wrapper {
-  display: flex;
-  width: 100%;
-  padding: 16px;
-  box-sizing: border-box;
-  border-top: .5px solid rgba(0, 0, 0, 0.1);
-  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
-  color: black;
-}
-
-.nickname-label {
-  width: 105px;
-}
-
+.userinfo,
+.userinfo-avatar,
+.usermotto,
+.avatar-wrapper,
+.avatar,
+.nickname-wrapper,
+.nickname-label,
 .nickname-input {
-  flex: 1;
+  display: none;
 }
 
 .container {
-  padding: 32rpx;
-  background-color: #F5F5F5;
   min-height: 100vh;
+  background: #8B0016;
+  padding: 32rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  padding: 20rpx;
+  margin-bottom: 40rpx;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+}
+
+.title {
+  font-size: 44rpx;
+  color: #2C3D4F;
+  text-align: center;
+  font-family: "STKaiti", "楷体", "华文楷体";
+  margin-bottom: 20rpx;
 }
 
 .upload-section {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 48rpx;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-top: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
 }
 
-.title {
-  font-size: 48rpx;
-  font-weight: bold;
+.upload-title {
+  font-size: 32rpx;
   color: #2C3D4F;
-  margin-bottom: 40rpx;
-  font-family: "PingFang SC";
-  position: relative;
-  padding: 0 40rpx;
-}
-
-/* 标题两侧的水墨装饰 */
-.title::before,
-.title::after {
-  content: '';
-  position: absolute;
-  width: 24rpx;
-  height: 80%;
-  top: 10%;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.title::before {
-  left: 0;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDI0IDgwIj48cGF0aCBkPSJNMTIgMEMyIDAgMCA0MCAwIDQwczIgNDAgMTIgNDBjMTAgMCAxMi00MCAxMi00MFMyMiAwIDEyIDB6IiBmaWxsPSIjMkMzRDRGIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==');
-}
-
-.title::after {
-  right: 0;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDI0IDgwIj48cGF0aCBkPSJNMTIgMEMyIDAgMCA0MCAwIDQwczIgNDAgMTIgNDBjMTAgMCAxMi00MCAxMi00MFMyMiAwIDEyIDB6IiBmaWxsPSIjMkMzRDRGIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==');
-  transform: scaleX(-1);
+  margin-bottom: 24rpx;
+  font-family: "STKaiti", "楷体", "华文楷体";
 }
 
 .upload-box {
-  width: 600rpx;
-  height: 400rpx;
-  border: 4rpx dashed #8B4513;
+  width: 100%;
+  height: 300rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2rpx dashed #88303c;
   border-radius: 16rpx;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 40rpx;
-  background: linear-gradient(to bottom right, rgba(139, 69, 19, 0.05), rgba(184, 115, 51, 0.05));
-  position: relative;
-  overflow: hidden;
-}
-
-/* 水墨晕染效果 */
-.upload-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIj48ZGVmcz48ZmlsdGVyIGlkPSJpbmtCbG90Ij48ZmVHYXVzc2lhbkJsdXIgaW49IlNvdXJjZUdyYXBoaWMiIHN0ZERldmlhdGlvbj0iNCIgcmVzdWx0PSJibHVyIi8+PC9maWx0ZXI+PC9kZWZzPjxjaXJjbGUgY3g9IjMwMCIgY3k9IjIwMCIgcj0iMTUwIiBmaWxsPSIjOEI0NTEzIiBmaWxsLW9wYWNpdHk9IjAuMDMiIGZpbHRlcj0idXJsKCNpbmtCbG90KSIvPjwvc3ZnPg==');
-  opacity: 0.6;
-  pointer-events: none;
+  justify-content: center;
+  margin-bottom: 24rpx;
 }
 
 .upload-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #8B4513;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .upload-icon {
   width: 80rpx;
   height: 80rpx;
-  margin-bottom: 20rpx;
-  opacity: 0.8;
+  margin-bottom: 16rpx;
+}
+
+.upload-placeholder text {
+  font-size: 28rpx;
+  color: #88303c;
 }
 
 .preview-image {
   width: 100%;
   height: 100%;
+  border-radius: 16rpx;
+  object-fit: cover;
+}
+
+.result-section {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 20rpx;
+  padding: 32rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+}
+
+.result-title {
+  font-size: 32rpx;
+  color: #2C3D4F;
+  margin-bottom: 24rpx;
+  font-family: "STKaiti", "楷体", "华文楷体";
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.style-name {
+  font-size: 28rpx;
+  color: #2C3D4F;
+  font-family: "STKaiti", "楷体", "华文楷体";
+}
+
+.confidence {
+  font-size: 24rpx;
+  color: #88303c;
 }
 
 .analyze-btn {
-  width: 600rpx;
+  width: 100%;
   height: 88rpx;
-  background: #2C3D4F;
-  color: #ffffff;
+  background: #88303c;
+  color: #FFFFFF;
   border-radius: 44rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 32rpx;
-  box-shadow: 0 4rpx 8rpx rgba(44, 61, 79, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32rpx;
+  box-shadow: 0 6rpx 20rpx rgba(136, 48, 60, 0.3);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* 按钮水墨效果 */
-.analyze-btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.3s;
+.analyze-btn[disabled] {
+  background: #CCCCCC;
+  color: #FFFFFF;
+  opacity: 0.6;
 }
 
-.analyze-btn:active::after {
-  transform: translateX(100%);
+.analyze-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(136, 48, 60, 0.2);
 }
 
 .history-section {
@@ -262,51 +243,26 @@ page {
   color: #999999;
 }
 
-/* 禁用状态 */
-.analyze-btn[disabled] {
-  background: #CCCCCC;
-  color: #FFFFFF;
-  opacity: 0.6;
-}
-
 .button-group {
-  width: 600rpx;
+  width: 100%;
+  margin-top: 32rpx;
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
-}
-
-.analyze-btn {
-  width: 100%;
-  height: 88rpx;
-  background: #2C3D4F;
-  color: #ffffff;
-  border-radius: 44rpx;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 32rpx;
-  box-shadow: 0 4rpx 8rpx rgba(44, 61, 79, 0.1);
-  position: relative;
-  overflow: hidden;
 }
 
 .clear-btn {
   width: 100%;
   height: 88rpx;
   background: #F5F5F5;
-  color: #8B4513;
-  border: 2rpx solid #8B4513;
+  color: #88303c;
+  border: 2rpx solid #88303c;
   border-radius: 44rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 32rpx;
-}
-
-.result-section {
-  width: 600rpx;
-  margin-top: 32rpx;
+  margin-top: 16rpx;
 }
 
 .result-card {
@@ -372,4 +328,29 @@ page {
   margin-top: 16rpx;
   padding-top: 16rpx;
   border-top: 2rpx solid rgba(139, 69, 19, 0.1);
+}
+
+.analyze-btn {
+  width: 100%;
+  height: 88rpx;
+  background: #88303c;
+  color: #FFFFFF;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6rpx 20rpx rgba(136, 48, 60, 0.3);
+  transition: all 0.3s ease;
+}
+
+.analyze-btn[disabled] {
+  background: #CCCCCC;
+  color: #FFFFFF;
+  opacity: 0.6;
+}
+
+.analyze-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(136, 48, 60, 0.2);
 }

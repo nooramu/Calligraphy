@@ -1,13 +1,13 @@
 /* pages/profile/profile.wxss */
 .container {
   min-height: 100vh;
-  background: #F5E6D3;  /* 米色背景 */
-  padding: 0 24rpx;
+  background: #8B0016;
+  padding: 50rpx 24rpx;
 }
 
 /* 用户信息卡片 */
 .user-card {
-  background: #A6866A;  /* 棕褐色背景 */
+  background: rgba(255, 255, 255, 0.98);
   padding: 40rpx 32rpx;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@
   width: 100%;
   box-sizing: border-box;
   border-radius: 20rpx;
-  box-shadow: 0 4rpx 12rpx rgba(166, 134, 106, 0.2);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
 }
 
 .user-info {
@@ -30,7 +30,8 @@
   height: 228rpx;
   border-radius: 114rpx;
   margin-right: 32rpx;
-  border: 6rpx solid #DCC7B0;  /* 浅棕色边框 */
+  border: 6rpx solid #fff;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
 }
 
 .user-detail {
@@ -42,29 +43,30 @@
 .username {
   font-size: 40rpx;
   font-weight: bold;
-  color: #F5E6D3;  /* 米色文字 */
+  color: #2C3D4F;
   margin-bottom: 12rpx;
+  font-family: "STKaiti", "楷体", "华文楷体";
 }
 
 .user-desc {
   font-size: 28rpx;
-  color: #DCC7B0;  /* 浅棕色文字 */
+  color: #666;
 }
 
 .login-btn {
   padding: 20rpx 40rpx;
-  background: #8C4B3C;  /* 深红褐色 */
-  color: #F5E6D3;  /* 米色文字 */
+  background: #88303c;
+  color: #fff;
   border-radius: 40rpx;
   font-size: 30rpx;
   min-width: 160rpx;
   text-align: center;
-  box-shadow: 0 4rpx 12rpx rgba(140, 75, 60, 0.2);
+  box-shadow: 0 4rpx 12rpx rgba(136, 48, 60, 0.2);
 }
 
 /* 数据统计栏 */
 .stats-bar {
-  background: #DCC7B0;  /* 浅棕色背景 */
+  background: rgba(255, 255, 255, 0.98);
   padding: 22rpx 0;
   display: flex;
   justify-content: space-around;
@@ -72,7 +74,7 @@
   width: 100%;
   box-sizing: border-box;
   border-radius: 20rpx;
-  box-shadow: 0 4rpx 12rpx rgba(166, 134, 106, 0.1);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
 }
 
 .stat-item {
@@ -86,13 +88,13 @@
 .stat-num {
   font-size: 40rpx;
   font-weight: bold;
-  color: #8C4B3C;  /* 深红褐色 */
+  color: #88303c;
   margin-bottom: 12rpx;
 }
 
 .stat-label {
   font-size: 26rpx;
-  color: #A6866A;  /* 棕褐色 */
+  color: #666;
 }
 
 /* 功能菜单列表 */
@@ -103,18 +105,18 @@
 }
 
 .menu-group {
-  background: #DCC7B0;  /* 浅棕色背景 */
+  background: rgba(255, 255, 255, 0.98);
   margin-bottom: 24rpx;
   border-radius: 20rpx;
   overflow: hidden;
-  box-shadow: 0 4rpx 12rpx rgba(166, 134, 106, 0.1);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
 }
 
 .menu-item {
   display: flex;
   align-items: center;
   padding: 40rpx 32rpx;
-  border-bottom: 1px solid #E8D5C0;  /* 更浅的分隔线 */
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
 }
 
 .menu-item:last-child {
@@ -122,20 +124,27 @@
 }
 
 .menu-icon {
-  width: 80rpx;
-  height: 80rpx;
-  margin-right: 32rpx;
-  opacity: 0.8;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 24rpx;
 }
 
 .menu-text {
   flex: 1;
-  font-size: 34rpx;
-  color: #8C4B3C;  /* 深红褐色 */
+  font-size: 30rpx;
+  color: #2C3D4F;
+  font-family: "STKaiti", "楷体", "华文楷体";
 }
 
 .arrow-icon {
   width: 36rpx;
   height: 36rpx;
   opacity: 0.4;
+}
+
+.version-info {
+  text-align: center;
+  padding: 32rpx;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 24rpx;
 }

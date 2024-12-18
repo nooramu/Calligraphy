@@ -1,27 +1,29 @@
 /* pages/history/history.wxss */
 .container {
   padding: 32rpx;
-  background-color: #F5F5F5;
+  background-color: #8B0016;
   min-height: 100vh;
 }
 
 .timeline-container {
-  width: 100%;
+  width: 30%;
 }
 
 .page-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 48rpx 0;
+  margin: 10rpx 0;
   position: relative;
 }
 
 .page-title text {
-  font-size: 48rpx;
-  font-weight: bold;
-  color: #2C3D4F;
-  padding: 0 40rpx;
+  font-size:50rpx;
+  /* font-weight: bold; */
+  color: #FFFFFF;
+  padding: 20rpx 40rpx;
+  font-family: "STKaiti", "楷体", "华文楷体";
+  letter-spacing: 8rpx;
 }
 
 .title-decoration {
@@ -43,177 +45,151 @@
 /* 朝代时间轴样式 */
 .dynasty-scroll {
   width: 100%;
-  margin: 60rpx 0;
+  height: 700rpx;
   position: relative;
-  height: 240rpx;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0;
+  margin-top: -80rpx;
 }
 
 .dynasty-timeline {
-  display: inline-flex;
-  padding: 0 40rpx;
+  display: flex;
+  padding: 0 60rpx;
   position: relative;
   height: 100%;
+  min-width: fit-content;
 }
 
 .timeline-bg {
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
-  height: 2rpx;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(139, 69, 19, 0.2) 20%, 
-    rgba(139, 69, 19, 0.2) 80%, 
-    transparent 100%
-  );
+  left: 20rpx;
+  right: 20rpx;
+  height: 60rpx;
+  transform: translateY(-50%);
+  z-index: 999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2400 100'%3E%3Cpath d='M0,50 C150,0 300,100 450,50 C600,0 750,100 900,50 C1050,0 1200,100 1350,50 C1500,0 1650,100 1800,50 C1950,0 2100,100 2250,50 C2300,0 2350,100 2400,50' fill='none' stroke='white' stroke-width='4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 60rpx;
+  background-position: center;
 }
 
+.timeline-bg svg,
+.timeline-bg path {
+  display: none;
+}
+
+/* 朝代项样式 */
 .dynasty-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-right: 120rpx;
+  align-items: flex-start;
+  margin-right: 0;
   position: relative;
-  padding-top: 40rpx;
-  transition: all 0.3s ease;
+  min-width: 160rpx;
+  flex: 1;
 }
 
+/* 上下交错布局 */
+.dynasty-item:nth-child(odd) {
+  padding-top: 440rpx;
+  padding-bottom: 10rpx;
+}
+
+.dynasty-item:nth-child(even) {
+  padding-top:140rpx;
+  padding-bottom: 0;
+}
+
+/* 连接线样式 */
 .dynasty-connector {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120rpx;
-  height: 2rpx;
-  background: #8B4513;
-  opacity: 0.3;
-  transform: translateY(-50%);
+  display: none;
 }
 
-.dynasty-dot-wrapper {
-  position: relative;
-  width: 40rpx;
-  height: 40rpx;
-  margin-bottom: 20rpx;
-}
-
-.dynasty-dot {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 3rpx solid #8B4513;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #FFF;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
-
-.dot-inner {
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 50%;
-  background: #8B4513;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.dynasty-info {
+/* 朝代内容样式 */
+.dynasty-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transform: translateY(0);
-  transition: all 0.3s ease;
+  align-items: flex-start;
+  max-width: 160rpx;
 }
 
+/* 朝代名称 */
 .dynasty-name {
-  font-size: 32rpx;
-  color: #2C3D4F;
-  margin-bottom: 8rpx;
-  font-weight: 500;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  margin-bottom: 12rpx;
+  font-weight: normal;
+  font-family: "FangSong", "STFangsong", "楷体", "华文楷体";
 }
 
+/* 年份样式 */
 .dynasty-year {
   font-size: 24rpx;
-  color: #666666;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 8rpx;
 }
 
-/* 水墨效果 */
-.ink-splash {
+/* 圆点样式 */
+.dynasty-dot {
+  display: none;
+}
+
+/* ��标题样式（如曹魏、蜀汉等） */
+.sub-dynasty {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 8rpx;
+}
+
+/* 向上箭头 */
+.arrow-up {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60rpx;
-  height: 60rpx;
-  transform: translate(-50%, -50%) scale(0);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 80c-16.6 0-30-13.4-30-30s13.4-30 30-30 30 13.4 30 30-13.4 30-30 30z' fill='%238B4513' fill-opacity='0.1'/%3E%3C/svg%3E");
-  background-size: contain;
-  opacity: 0;
-  transition: all 0.5s ease;
-  pointer-events: none;
+  left: 0;
+  bottom: 270rpx;
+  width: 2rpx;
+  height: 40rpx;
+  background: #000000;
 }
 
-/* 激活状态样式 */
-.dynasty-item.active {
-  transform: scale(1.05);
-}
-
-.dynasty-item.active .dynasty-dot {
-  transform: scale(1.2);
-  border-color: #8B4513;
-  box-shadow: 0 0 20rpx rgba(139, 69, 19, 0.2);
-}
-
-.dynasty-item.active .dot-inner {
-  opacity: 1;
-}
-
-.dynasty-item.active .dynasty-name {
-  color: #8B4513;
-  font-weight: bold;
-}
-
-.dynasty-item.active .ink-splash {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-}
-
-.dynasty-item.active .dynasty-info {
-  transform: translateY(-8rpx);
-}
-
-/* 添加hover效果 */
-.dynasty-item:not(.active):hover .dynasty-dot {
-  transform: scale(1.1);
-}
-
-/* 添加动画效果 */
-@keyframes inkDrop {
-  0% {
-    transform: translate(-50%, -50%) scale(0.8);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 0;
-  }
-}
-
-.dynasty-item.active .ink-splash::after {
+.arrow-up::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  background: inherit;
-  background-size: contain;
-  animation: inkDrop 2s ease-out infinite;
+  bottom: 100%;
+  left: -4rpx;
+  border: 4rpx solid #000000;
+  border-width: 0 2rpx 2rpx 0;
+  padding: 4rpx;
+  transform: rotate(-135deg);
+}
+
+/* 向下箭头 */
+.arrow-down {
+  position: absolute;
+  left: 0;
+  top:270rpx;
+  width: 2rpx;
+  height: 40rpx;
+  background: #000000;
+}
+
+.arrow-down::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -4rpx;
+  border: 4rpx solid #000000;
+  border-width: 0 2rpx 2rpx 0;
+  padding: 4rpx;
+  transform: rotate(45deg);
+}
+
+/* 移除所有不必要的装饰和动画效果 */
+.ink-splash,
+.dot-inner,
+.title-decoration {
+  display: none;
 }
 
 /* 风格详情样式 */
@@ -342,4 +318,9 @@
   font-size: 28rpx;
   color: #333333;
   line-height: 1.8;
+}
+
+/* 滚动条样式优����� */
+.dynasty-scroll::-webkit-scrollbar {
+  display: none;
 }

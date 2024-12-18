@@ -1,103 +1,79 @@
 <!--pages/forum/forum.wxml-->
 <view class="container">
-  <!-- 帖子列表 -->
-  <scroll-view class="posts-container" 
-               scroll-y 
-               bindscrolltolower="loadMorePosts"
-               refresher-enabled
-               bindrefresherrefresh="onRefresh"
-               refresher-triggered="{{isRefreshing}}">
-    <view class="post-item" 
-          wx:for="{{postsList}}" 
-          wx:key="id"
-          bindtap="navigateToPost"
-          data-id="{{item.id}}">
-      <!-- 用户信息 -->
-      <view class="post-header">
-        <image class="avatar" src="{{item.avatar}}" mode="aspectFill"/>
-        <view class="user-info">
-          <text class="username">{{item.username}}</text>
-          <text class="post-time">{{item.createTime}}</text>
-        </view>
-      </view>
-
-      <!-- 帖子内容 -->
-      <view class="post-content">
-        <text class="post-title">{{item.title}}</text>
-        <text class="post-text">{{item.content}}</text>
-        <!-- 图片展示 -->
-        <view class="image-grid" wx:if="{{item.images.length > 0}}">
-          <image wx:for="{{item.images}}" 
-                 wx:key="*this" 
-                 wx:for-item="image"
-                 src="{{image}}" 
-                 mode="aspectFill"
-                 class="post-image"
-                 catchtap="previewImage"
-                 data-urls="{{item.images}}"
-                 data-current="{{image}}"/>
-        </view>
-      </view>
-
-      <!-- 帖子数据 -->
-      <view class="post-footer">
-        <view class="action-item" catchtap="handleLike" data-id="{{item.id}}">
-          <image class="action-icon" src="{{item.isLiked ? '/assets/icons/like-filled.png' : '/assets/icons/like.png'}}"/>
-          <text>{{item.likes}}</text>
-        </view>
-        <view class="action-item" catchtap="handleComment" data-id="{{item.id}}">
-          <image class="action-icon" src="/assets/icons/comment.png"/>
-          <text>{{item.comments}}</text>
-        </view>
-        <view class="action-item" catchtap="handleShare" data-id="{{item.id}}">
-          <image class="action-icon" src="/assets/icons/share.png"/>
-          <text>分享</text>
+  <view class="waterfall">
+    <view class="waterfall-column">
+      <!-- 左列 -->
+      <view class="post-card" 
+            wx:for="{{leftPosts}}" 
+            wx:key="id"
+            bindtap="navigateToPost"
+            data-id="{{item.id}}">
+        <image class="post-image" 
+               mode="aspectFill" 
+               src="{{item.image}}" 
+               catch:tap="previewImage"
+               data-url="{{item.image}}"/>
+        <view class="post-content">
+          <text class="post-title">{{item.title}}</text>
+          <text class="post-desc">{{item.description}}</text>
+          <view class="post-footer">
+            <view class="user-info">
+              <image class="avatar" src="{{item.avatar}}"/>
+              <text class="username">{{item.username}}</text>
+            </view>
+            <view class="interactions">
+              <view class="like" catchtap="handleLike" data-id="{{item.id}}">
+                <text class="icon">❤</text>
+                <text>{{item.likes}}</text>
+              </view>
+              <view class="comment" catchtap="handleComment" data-id="{{item.id}}">
+                <text class="icon">💬</text>
+                <text>{{item.comments}}</text>
+              </view>
+            </view>
+          </view>
         </view>
       </view>
     </view>
-  </scroll-view>
-
-  <!-- 发帖按钮 -->
-  <view class="post-btn" bindtap="showPostModal">
-    <image src="/assets/icons/edit.png" class="post-icon"/>
+    
+    <view class="waterfall-column">
+      <!-- 右列 -->
+      <view class="post-card" 
+            wx:for="{{rightPosts}}" 
+            wx:key="id"
+            bindtap="navigateToPost"
+            data-id="{{item.id}}">
+        <image class="post-image" 
+               mode="aspectFill" 
+               src="{{item.image}}" 
+               catch:tap="previewImage"
+               data-url="{{item.image}}"/>
+        <view class="post-content">
+          <text class="post-title">{{item.title}}</text>
+          <text class="post-desc">{{item.description}}</text>
+          <view class="post-footer">
+            <view class="user-info">
+              <image class="avatar" src="{{item.avatar}}"/>
+              <text class="username">{{item.username}}</text>
+            </view>
+            <view class="interactions">
+              <view class="like" catchtap="handleLike" data-id="{{item.id}}">
+                <text class="icon">❤</text>
+                <text>{{item.likes}}</text>
+              </view>
+              <view class="comment" catchtap="handleComment" data-id="{{item.id}}">
+                <text class="icon">💬</text>
+                <text>{{item.comments}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
   </view>
 
-  <!-- 发帖弹窗 -->
-  <view class="modal" wx:if="{{showPostModal}}">
-    <view class="modal-content">
-      <view class="modal-header">
-        <text class="modal-title">发布新帖</text>
-        <image src="/assets/icons/close.png" 
-               class="close-icon" 
-               bindtap="hidePostModal"/>
-      </view>
-
-      <input class="post-title-input" 
-             placeholder="请输入标题" 
-             model:value="{{newPost.title}}"/>
-      
-      <textarea class="post-content-input" 
-                placeholder="请输入内容" 
-                model:value="{{newPost.content}}"
-                maxlength="500"/>
-
-      <view class="image-uploader">
-        <view class="image-item" 
-              wx:for="{{newPost.images}}" 
-              wx:key="*this">
-          <image src="{{item}}" mode="aspectFill"/>
-          <view class="delete-btn" 
-                catchtap="deleteImage" 
-                data-index="{{index}}">×</view>
-        </view>
-        <view class="upload-btn" 
-              bindtap="chooseImage" 
-              wx:if="{{newPost.images.length < 9}}">
-          <image src="/assets/icons/camera.png"/>
-        </view>
-      </view>
-
-      <button class="submit-btn" bindtap="submitPost">发布</button>
-    </view>
+  <!-- 发帖按钮 -->
+  <view class="post-button" bindtap="createPost">
+    <text>+</text>
   </view>
 </view>

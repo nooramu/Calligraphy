@@ -5,53 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isRefreshing: false,
-    showPostModal: false,
-    newPost: {
-      title: '',
-      content: '',
-      images: []
-    },
-    postsList: [
-      {
-        id: 1,
-        username: '书法爱好者',
-        avatar: '/assets/images/avatars/user1.jpg',
-        createTime: '10分钟前',
-        title: '谈谈书法创作中的用笔技巧',
-        content: '书法创作中，用笔的轻重缓急至关重要。我认为要做到"提按分明，轻重得宜"...',
-        images: [
-          '/assets/images/forum/post1_1.jpg',
-          '/assets/images/forum/post1_2.jpg'
-        ],
-        likes: 12,
-        isLiked: false,
-        comments: 5
-      },
-      {
-        id: 2,
-        username: '墨痕斋主',
-        avatar: '/assets/images/avatars/user2.jpg',
-        createTime: '1小时前',
-        title: '临摹兰亭序心得',
-        content: '最近在临摹兰亭序，分享一下心得体会和作品，请各位指教...',
-        images: [
-          '/assets/images/forum/post2_1.jpg',
-          '/assets/images/forum/post2_2.jpg',
-          '/assets/images/forum/post2_3.jpg'
-        ],
-        likes: 28,
-        isLiked: false,
-        comments: 15
-      }
-    ]
+    leftPosts: [],
+    rightPosts: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.loadPosts();
   },
 
   /**
@@ -119,17 +81,24 @@ Page({
   // 跳转到帖子详情
   navigateToPost(e) {
     const id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: `/pages/post-detail/post-detail?id=${id}`
-    });
+    const posts = [...this.data.leftPosts, ...this.data.rightPosts];
+    const post = posts.find(p => p.id === id);
+    
+    if (post) {
+      // 将帖子数据转换为 URL 参数
+      const postData = encodeURIComponent(JSON.stringify(post));
+      wx.navigateTo({
+        url: `/pages/post-detail/post-detail?id=${id}&postData=${postData}`
+      });
+    }
   },
 
   // 预览图片
   previewImage(e) {
-    const { urls, current } = e.currentTarget.dataset;
+    const url = e.currentTarget.dataset.url;
     wx.previewImage({
-      urls,
-      current
+      current: url,
+      urls: [url]
     });
   },
 
@@ -208,30 +177,7 @@ Page({
   // 处理点赞
   handleLike(e) {
     const id = e.currentTarget.dataset.id;
-    const posts = this.data.postsList;
-    const index = posts.findIndex(post => post.id === id);
-    
-    if (index === -1) return;
-    
-    const post = posts[index];
-    const isLiked = !post.isLiked;
-    const likes = isLiked ? post.likes + 1 : post.likes - 1;
-    
-    this.setData({
-      [`postsList[${index}].isLiked`]: isLiked,
-      [`postsList[${index}].likes`]: likes
-    });
-
-    // 显示点赞反馈
-    if (isLiked) {
-      wx.showToast({
-        title: '点赞成功',
-        icon: 'success',
-        duration: 1500
-      });
-    }
-
-    // TODO: 调用后端 API 更新点赞状态
+    // 处理点赞逻辑
   },
 
   // 处理评论
@@ -281,6 +227,119 @@ Page({
           });
         }
       }
+    });
+  },
+
+  loadPosts() {
+    // 模拟数据
+    const posts = [
+      {
+        id: 1,
+        image: '/assets/images/forum/post1.jpg',
+        title: '行书练习心得',
+        description: '今天练习王羲之的兰亭序，重点研究了永字八法的用笔技巧，感觉有些突破...',
+        avatar: '/assets/images/avatars/user1.jpg',
+        username: '书法爱好者',
+        likes: 128,
+        comments: 32
+      },
+      {
+        id: 2,
+        image: '/assets/images/forum/post2.jpg',
+        title: '楷书基本笔画练习',
+        description: '分享一下楷书基本笔画的练习方法，包括横、竖、撇、捺等...',
+        avatar: '/assets/images/avatars/user2.jpg',
+        username: '墨香斋',
+        likes: 89,
+        comments: 15
+      },
+      {
+        id: 3,
+        image: '/assets/images/forum/post3.jpg',
+        title: '草书创作分享',
+        description: '最近在研究张旭的草书，这是我的一些习作，请大家指教...',
+        avatar: '/assets/images/avatars/user3.jpg',
+        username: '逸笔生花',
+        likes: 256,
+        comments: 48
+      },
+      {
+        id: 4,
+        image: '/assets/images/forum/post4.jpg',
+        title: '篆刻作品展示',
+        description: '新完成的篆刻作品，用的是上等寿山石，请欣赏...',
+        avatar: '/assets/images/avatars/user4.jpg',
+        username: '印痴',
+        likes: 167,
+        comments: 23
+      },
+      // 新增的4个帖子
+      {
+        id: 5,
+        image: '/assets/images/forum/post5.jpg',
+        title: '隶书临习心得',
+        description: '最近在临习《张迁碑》，重点研究了波磔的用笔方法，分享一下心得体会...',
+        avatar: '/assets/images/avatars/user5.jpg',
+        username: '古法新韵',
+        likes: 145,
+        comments: 28
+      },
+      {
+        id: 6,
+        image: '/assets/images/forum/post6.jpg',
+        title: '小楷日常练习',
+        description: '每日坚持练习赵佶小楷，今天重点研究了点画的收笔技巧...',
+        avatar: '/assets/images/avatars/user6.jpg',
+        username: '书法日记',
+        likes: 112,
+        comments: 19
+      },
+      {
+        id: 7,
+        image: '/assets/images/forum/post7.jpg',
+        title: '行草创作分享',
+        description: '用王羲之的《十七帖》为范本，尝试创作了一幅行草作品，请各位指教...',
+        avatar: '/assets/images/avatars/user7.jpg',
+        username: '墨韵轩',
+        likes: 198,
+        comments: 42
+      },
+      {
+        id: 8,
+        image: '/assets/images/forum/post8.jpg',
+        title: '篆书学习笔记',
+        description: '正在研习《说文解字》，对篆书的结构有了新的认识，记录一下学习心得...',
+        avatar: '/assets/images/avatars/user8.jpg',
+        username: '金石之趣',
+        likes: 134,
+        comments: 26
+      }
+    ];
+
+    this.distributePosts(posts);
+  },
+
+  distributePosts(posts) {
+    const left = [];
+    const right = [];
+    
+    posts.forEach((post, index) => {
+      if (index % 2 === 0) {
+        left.push(post);
+      } else {
+        right.push(post);
+      }
+    });
+
+    this.setData({
+      leftPosts: left,
+      rightPosts: right
+    });
+  },
+
+  createPost() {
+    wx.navigateTo({
+      url: '/pages/post/create'
     });
   }
 })

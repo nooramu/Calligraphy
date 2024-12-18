@@ -1,0 +1,33 @@
+<view class="container">
+  <!-- 图片上传区域 -->
+  <view class="image-section">
+    <view class="image-list">
+      <view class="image-item" wx:for="{{post.images}}" wx:key="*this">
+        <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-url="{{item}}"/>
+        <view class="delete-btn" catchtap="deleteImage" data-index="{{index}}">×</view>
+      </view>
+      <view class="add-image" bindtap="chooseImage" wx:if="{{post.images.length < 9}}">
+        <text class="add-icon">+</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 标题输入框 -->
+  <input class="title-input" 
+         placeholder="添加标题" 
+         value="{{post.title}}"
+         bindinput="onTitleInput"/>
+
+  <!-- 正文输入框 -->
+  <textarea class="content-input" 
+            placeholder="添加正文" 
+            value="{{post.content}}"
+            bindinput="onContentInput"
+            maxlength="1000"
+            auto-height/>
+
+  <!-- 底部按钮组 -->
+  <view class="bottom-bar">
+    <button class="publish-btn" bindtap="submitPost">发布笔记</button>
+  </view>
+</view> 

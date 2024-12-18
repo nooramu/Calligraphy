@@ -7,19 +7,19 @@ Page({
   data: {
     currentDynasty: 0,
     dynastyList: [
-      { id: 1, name: '先秦', year: '前1600年-前221年' },
-      { id: 2, name: '秦汉', year: '前221年-220年' },
-      { id: 3, name: '魏晋', year: '220年-420年' },
-      { id: 4, name: '南北朝', year: '420年-589年' },
-      { id: 5, name: '隋唐', year: '581年-907年' },
-      { id: 6, name: '宋', year: '960年-1279年' },
-      { id: 7, name: '元', year: '1271年-1368年' },
+      { id: 1, name: '商代', year: '前1600年-前221年' },
+      { id: 2, name: '秦朝', year: '前221年-220年' },
+      { id: 3, name: '汉代', year: '220年-420年' },
+      { id: 4, name: '魏晋南北朝', year: '420年-589年' },
+      { id: 5, name: '唐代', year: '581年-907年' },
+      { id: 6, name: '宋代', year: '960年-1279年' },
+      { id: 7, name: '元代', year: '1271年-1368年' },
       { id: 8, name: '明清', year: '1368年-1912年' }
     ],
     styleData: {
       0: {
         name: '甲骨文',
-        period: '商代晚期',
+        period: '商代',
         works: [
           {
             id: 1,
@@ -90,7 +90,7 @@ Page({
           '笔画有粗细变化',
           '点画趋向扁平化'
         ],
-        background: '隶书是在秦汉之际由小篆演变而来的一种书体，它打破了小篆一味求圆的造型特点，创造出富于变化的笔法，开创了中国书法艺术的新纪元。'
+        background: '隶书是在秦汉之际由小篆演变而来的一种书体，它打破了小篆一求圆的造型点，创造出富于变化的笔法，开创了中国书法艺术的新纪元。'
       },
       3: {
         name: '楷书',
@@ -116,8 +116,107 @@ Page({
           '结构匀称，章法严谨'
         ],
         background: '楷书在魏晋南北朝时期逐渐成熟，是由隶书演变而来。它的出现标志着中国书法进入了一个规范化的新阶段，也是后世最常用的书体。'
+      },
+      4: {
+        name: '唐楷',
+        period: '唐代',
+        works: [
+          {
+            id: 1,
+            name: '颜真卿《多宝塔碑》',
+            author: '颜真卿',
+            image: '/assets/images/history/tangkai1.jpg'
+          },
+          {
+            id: 2,
+            name: '欧阳询《皇甫诞碑》',
+            author: '欧阳询',
+            image: '/assets/images/history/tangkai2.jpg'
+          }
+        ],
+        features: [
+          '笔画端庄雄浑',
+          '结构严谨匀称',
+          '气势开张大度',
+          '风格典雅华贵'
+        ],
+        background: '唐代是中国书法发展的黄金时期，楷书发展到了巅峰。以颜真卿、欧阳询为代表的唐代书法家，创造了雄浑有力、端庄典雅的唐楷风格。'
+      },
+      5: {
+        name: '宋体',
+        period: '宋代',
+        works: [
+          {
+            id: 1,
+            name: '苏轼《黄州寒食诗帖》',
+            author: '苏轼',
+            image: '/assets/images/history/song1.jpg'
+          },
+          {
+            id: 2,
+            name: '米芾《蜀素帖》',
+            author: '米芾',
+            image: '/assets/images/history/song2.jpg'
+          }
+        ],
+        features: [
+          '笔法圆润秀丽',
+          '结构严谨工整',
+          '风格清新淡雅',
+          '重视书法理论'
+        ],
+        background: '宋代书法承继唐楷传统，但更趋向于含蓄典雅。文人书法兴起，以苏轼、黄庭坚、米芾等人为代表，形成了独特的"宋四家"书风。'
+      },
+      6: {
+        name: '元书',
+        period: '元代',
+        works: [
+          {
+            id: 1,
+            name: '赵孟頫《洛神赋》',
+            author: '赵孟頫',
+            image: '/assets/images/history/yuan1.jpg'
+          },
+          {
+            id: 2,
+            name: '虞集《道场碑》',
+            author: '虞集',
+            image: '/assets/images/history/yuan2.jpg'
+          }
+        ],
+        features: [
+          '复古意识强烈',
+          '笔法遒劲有力',
+          '融合书画特点',
+          '重视个人风格'
+        ],
+        background: '元代书法以赵孟頫为代表，提出"书画同源"理论，强调复古与创新的统一，对后世产生深远影响。'
+      },
+      7: {
+        name: '明清书',
+        period: '明清',
+        works: [
+          {
+            id: 1,
+            name: '王铎《行书七言诗》',
+            author: '王铎',
+            image: '/assets/images/history/mingqing1.jpg'
+          },
+          {
+            id: 2,
+            name: '何绍基《行书五言诗》',
+            author: '何绍基',
+            image: '/assets/images/history/mingqing2.jpg'
+          }
+        ],
+        features: [
+          '书风多样化',
+          '重视临摹传统',
+          '追求个性表现',
+          '理论研究深入'
+        ],
+        background: '明清书法呈现多元化发展趋势，既有对传统的继承，也有新的创新。明代"明四家"和清代"清四大家"的出现，丰富了中国书法艺术的表现形式。'
       }
-      // ... 可以继续添加其他朝代的书法风格数据
     }
   },
 
@@ -125,7 +224,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // 初始化时加载第一个朝代的数据
     this.loadDynastyStyle(0);
   },
 
@@ -202,7 +300,7 @@ Page({
     });
   },
 
-  // 在 Page 对象中添加
+  // 处理图片加载错误
   handleImageError(e) {
     const index = e.currentTarget.dataset.index;
     const defaultImage = '/assets/images/history/placeholder.jpg';

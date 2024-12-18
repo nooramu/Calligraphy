@@ -1,10 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/forum/forum",
     "pages/history/history",
     "pages/gallery/gallery",
-    "pages/forum/forum",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/post-detail/post-detail",
+    "pages/post/create"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,64 @@
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="user-info">
+    <image class="avatar" src="{{post.avatar}}"/>
+    <view class="user-meta">
+      <text class="username">{{post.username}}</text>
+      <text class="post-time">{{post.createTime}}</text>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content-section">
+    <text class="post-title">{{post.title}}</text>
+    <text class="post-desc">{{post.description}}</text>
+    <image class="post-image" 
+           src="{{post.image}}" 
+           mode="widthFix"
+           bindtap="previewImage"
+           data-url="{{post.image}}"/>
+  </view>
+
+  <!-- 交互区域 -->
+  <view class="interactions">
+    <view class="action-item" bindtap="handleLike">
+      <text class="icon {{post.isLiked ? 'liked' : ''}}">❤</text>
+      <text class="count">{{post.likes}}</text>
+    </view>
+    <view class="action-item" bindtap="focusComment">
+      <text class="icon">💬</text>
+      <text class="count">{{post.comments}}</text>
+    </view>
+    <view class="action-item" bindtap="handleShare">
+      <text class="icon">↗</text>
+      <text class="count">分享</text>
+    </view>
+  </view>
+
+  <!-- 评论区 -->
+  <view class="comments-section">
+    <view class="section-title">评论 {{post.comments}}</view>
+    <view class="comment-list">
+      <view class="comment-item" wx:for="{{commentList}}" wx:key="id">
+        <view class="comment-header">
+          <image class="comment-avatar" src="{{item.avatar}}"/>
+          <text class="comment-user">{{item.username}}</text>
+        </view>
+        <view class="comment-content">
+          <text class="comment-text">{{item.content}}</text>
+          <text class="comment-time">{{item.createTime}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 评论输入框 -->
+<view class="comment-input-section">
+  <input class="comment-input" 
+         placeholder="写下你的评论..." 
+         value="{{commentText}}"
+         focus="{{commentFocus}}"
+         bindinput="onCommentInput"/>
+  <button class="send-btn" bindtap="submitComment">发送</button>
+</view> 
