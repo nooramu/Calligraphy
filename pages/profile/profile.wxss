@@ -16,6 +16,7 @@
   box-sizing: border-box;
   border-radius: 20rpx;
   box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+  position: relative;
 }
 
 .user-info {
@@ -34,34 +35,31 @@
   box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
 }
 
-.user-detail {
+.info-right {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  justify-content: center;
+  gap: 12rpx;
 }
 
-.username {
+.nickname {
   font-size: 40rpx;
   font-weight: bold;
   color: #2C3D4F;
-  margin-bottom: 12rpx;
+  line-height: 1.2;
   font-family: "STKaiti", "楷体", "华文楷体";
 }
 
-.user-desc {
+.user-id {
   font-size: 28rpx;
   color: #666;
+  line-height: 1.2;
 }
 
-.login-btn {
-  padding: 20rpx 40rpx;
-  background: #88303c;
-  color: #fff;
-  border-radius: 40rpx;
-  font-size: 30rpx;
-  min-width: 160rpx;
-  text-align: center;
-  box-shadow: 0 4rpx 12rpx rgba(136, 48, 60, 0.2);
+.signature {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.2;
 }
 
 /* 数据统计栏 */
@@ -142,9 +140,41 @@
   opacity: 0.4;
 }
 
-.version-info {
-  text-align: center;
-  padding: 32rpx;
-  color: rgba(255, 255, 255, 0.6);
+/* 编辑按钮 */
+.edit-btn {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  padding: 12rpx 20rpx;
+  background: rgba(139, 0, 22, 0.1);
+  border-radius: 30rpx;
+}
+
+.edit-icon {
+  font-size: 28rpx;
+  color: #8B0016;
+  margin-right: 8rpx;
+}
+
+.edit-text {
   font-size: 24rpx;
+  color: #8B0016;
+}
+
+/* 未登录状态样式 */
+.user-info:not(.logged) .nickname {
+  color: #8B0016;
+  font-size: 36rpx;
+}
+
+.user-info:not(.logged) .user-id {
+  color: #999;
+  font-size: 24rpx;
+}
+
+/* 点击反馈效果 */
+.user-info:not(.logged):active {
+  opacity: 0.8;
 }

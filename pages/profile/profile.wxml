@@ -2,14 +2,19 @@
 <view class="container">
   <!-- 用户信息卡片 -->
   <view class="user-card">
-    <view class="user-info">
-      <image class="avatar" src="{{userInfo.avatar || '/assets/images/default-avatar.png'}}" mode="aspectFill"/>
-      <view class="user-detail">
-        <text class="username">{{userInfo.nickname || '未登录'}}</text>
-        <text class="user-desc">{{userInfo.description || '点击登录账号'}}</text>
+    <view class="user-info {{isLoggedIn ? 'logged' : ''}}" bindtap="{{!isLoggedIn ? 'handleLogin' : ''}}">
+      <image class="avatar" src="{{userInfo.avatarUrl || defaultAvatarUrl}}" mode="aspectFill"/>
+      <view class="info-right">
+        <text class="nickname">{{isLoggedIn ? userInfo.nickName : '请登录'}}</text>
+        <text class="user-id">{{isLoggedIn ? 'ID: ' + (userId || '--') : '点击此处登录'}}</text>
+        <text class="signature" wx:if="{{isLoggedIn}}">{{userInfo.signature || '这个人很懒，什么都没写~'}}</text>
       </view>
     </view>
-    <button class="login-btn" bindtap="handleLogin" wx:if="{{!isLoggedIn}}">登录</button>
+    <!-- 只在登录后显示编辑按钮 -->
+    <view class="edit-btn" bindtap="editUserInfo" wx:if="{{isLoggedIn}}">
+      <text class="edit-icon">✎</text>
+      <text class="edit-text">编辑资料</text>
+    </view>
   </view>
 
   <!-- 数据统计 -->
@@ -31,12 +36,12 @@
   <!-- 功能列表 -->
   <view class="menu-list">
     <view class="menu-group">
-      <view class="menu-item" bindtap="navigateTo" data-url="/pages/my-posts/my-posts">
+      <view class="menu-item" bindtap="navigateTo" data-url="/pages/profile/posts/posts">
         <image class="menu-icon" src="/assets/icons/posts.png"/>
         <text class="menu-text">我的帖子</text>
         <image class="arrow-icon" src="/assets/icons/arrow-right.png"/>
       </view>
-      <view class="menu-item" bindtap="navigateTo" data-url="/pages/my-collections/my-collections">
+      <view class="menu-item" bindtap="navigateTo" data-url="/pages/profile/collections/collections">
         <image class="menu-icon" src="/assets/icons/collections.png"/>
         <text class="menu-text">我的收藏</text>
         <image class="arrow-icon" src="/assets/icons/arrow-right.png"/>
@@ -44,17 +49,17 @@
     </view>
 
     <view class="menu-group">
-      <view class="menu-item" bindtap="navigateTo" data-url="/pages/settings/settings">
+      <view class="menu-item" bindtap="navigateTo" data-url="/pages/profile/settings/settings">
         <image class="menu-icon" src="/assets/icons/settings.png"/>
         <text class="menu-text">设置</text>
         <image class="arrow-icon" src="/assets/icons/arrow-right.png"/>
       </view>
-      <view class="menu-item" bindtap="navigateTo" data-url="/pages/feedback/feedback">
+      <view class="menu-item" bindtap="navigateTo" data-url="/pages/profile/feedback/feedback">
         <image class="menu-icon" src="/assets/icons/feedback.png"/>
         <text class="menu-text">意见反馈</text>
         <image class="arrow-icon" src="/assets/icons/arrow-right.png"/>
       </view>
-      <view class="menu-item" bindtap="navigateTo" data-url="/pages/about/about">
+      <view class="menu-item" bindtap="navigateTo" data-url="/pages/profile/about/about">
         <image class="menu-icon" src="/assets/icons/about.png"/>
         <text class="menu-text">关于我们</text>
         <image class="arrow-icon" src="/assets/icons/arrow-right.png"/>
@@ -62,3 +67,4 @@
     </view>
   </view>
 </view>
+

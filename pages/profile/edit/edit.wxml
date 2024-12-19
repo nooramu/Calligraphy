@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="edit-form">
+    <view class="form-item">
+      <text class="label">头像</text>
+      <view class="avatar-wrapper" bindtap="changeAvatar">
+        <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"/>
+        <text class="change-text">点击更换</text>
+      </view>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">昵称</text>
+      <input class="input" 
+             value="{{userInfo.nickName}}"
+             placeholder="请输入昵称"
+             bindinput="onNicknameInput"/>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">个性签名</text>
+      <textarea class="textarea" 
+                value="{{userInfo.signature}}"
+                placeholder="介绍一下自己吧"
+                maxlength="50"
+                bindinput="onSignatureInput"/>
+    </view>
+  </view>
+
+  <button class="save-btn" bindtap="saveUserInfo">保存</button>
+</view> 

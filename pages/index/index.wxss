@@ -176,23 +176,35 @@ page {
 .section-title {
   font-size: 32rpx;
   font-weight: bold;
-  color: #2C3D4F;
+  color: #FFFFFF;
   margin-bottom: 30rpx;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .section-title::before {
   content: '';
   width: 6rpx;
   height: 32rpx;
-  background: #8B4513;
+  background: #FFFFFF;
   margin-right: 16rpx;
   border-radius: 3rpx;
 }
 
+.more-link {
+  font-size: 26rpx;
+  color: #FFFFFF;
+  font-weight: normal;
+}
+
+.more-link:active {
+  opacity: 0.8;
+}
+
 .history-list {
   width: 100%;
+  overflow: hidden;
 }
 
 .history-item {

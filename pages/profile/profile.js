@@ -6,14 +6,8 @@ Page({
    */
   data: {
     isLoggedIn: false,
-    userInfo: {
-      avatar: '',
-      nickname: '',
-      description: '',
-      posts: 0,
-      likes: 0,
-      collections: 0
-    }
+    userInfo: {},
+    defaultAvatarUrl: '/assets/images/default-avatar.png'
   },
 
   /**
@@ -78,28 +72,39 @@ Page({
 
   // 检查登录状态
   checkLoginStatus() {
-    // TODO: 检查本地存储的登录信息或调用后端API
-    const token = wx.getStorageSync('token');
-    if (token) {
-      this.setData({ isLoggedIn: true });
-      this.loadUserData();
+    const token = wx.getStorageSync('token')
+    const userInfo = wx.getStorageSync('userInfo')
+    
+    if (token && userInfo) {
+      this.setData({
+        isLoggedIn: true,
+        userInfo: userInfo
+      })
+    } else {
+      this.setData({
+        isLoggedIn: false,
+        userInfo: {}
+      })
     }
   },
 
   // 加载用户数据
   loadUserData() {
-    // TODO: 调用后端API获取用户数据
-    // 这里使用模拟数据
+    // 模拟数据
+    const mockUserInfo = {
+      avatarUrl: '/assets/images/avatars/user1.jpg',
+      nickName: '书法爱好者小王',
+      signature: '临池学书，十年磨一剑',
+      posts: 12,
+      likes: 168,
+      collections: 45
+    }
+    const mockUserId = 'SF88888'
+
     this.setData({
-      userInfo: {
-        avatar: '/assets/images/avatars/user1.jpg',
-        nickname: '书法爱好者',
-        description: '热爱书法，追求艺术',
-        posts: 12,
-        likes: 168,
-        collections: 45
-      }
-    });
+      userInfo: mockUserInfo,
+      userId: mockUserId
+    })
   },
 
   // 处理登录
@@ -107,33 +112,37 @@ Page({
     wx.getUserProfile({
       desc: '用于完善用户资料',
       success: (res) => {
-        // TODO: 调用后端API进行登录
-        console.log('用户信息：', res.userInfo);
+        const userInfo = res.userInfo
+        // 保存用户信息和登录状态
+        wx.setStorageSync('userInfo', userInfo)
+        wx.setStorageSync('token', 'mock-token')
+        
         this.setData({
           isLoggedIn: true,
-          userInfo: {
-            ...this.data.userInfo,
-            avatar: res.userInfo.avatarUrl,
-            nickname: res.userInfo.nickName
-          }
-        });
-        // 存储登录状态
-        wx.setStorageSync('token', 'mock-token');
+          userInfo: userInfo
+        })
       },
       fail: (err) => {
-        console.error('获取用户信息失败：', err);
+        console.error('获取用户信息失败：', err)
         wx.showToast({
           title: '登录失败',
           icon: 'none'
-        });
+        })
       }
-    });
+    })
   },
 
   // 页面导航
   navigateTo(e) {
     const url = e.currentTarget.dataset.url;
-    if (!this.data.isLoggedIn && url !== '/pages/about/about') {
+    // 关于我们页面不需要登录验证
+    if (url === '/pages/profile/about/about') {
+      wx.navigateTo({ url });
+      return;
+    }
+    
+    // 其他页面需要登录验证
+    if (!this.data.isLoggedIn) {
       wx.showToast({
         title: '请先登录',
         icon: 'none'
@@ -141,5 +150,11 @@ Page({
       return;
     }
     wx.navigateTo({ url });
+  },
+
+  editUserInfo() {
+    wx.navigateTo({
+      url: '/pages/profile/edit/edit'
+    })
   }
 })

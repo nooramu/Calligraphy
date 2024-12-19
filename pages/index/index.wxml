@@ -43,9 +43,12 @@
     </view>
 
     <view class="history-section">
-      <view class="section-title">历史记录</view>
+      <view class="section-title">
+        历史记录
+        <navigator url="./history/history" class="more-link">更多</navigator>
+      </view>
       <view class="history-list">
-        <view class="history-item" wx:for="{{historyList}}" wx:key="id">
+        <view class="history-item" wx:for="{{historyList}}" wx:key="id" wx:if="{{index < 2}}">
           <image src="{{item.imagePath}}" mode="aspectFill" class="history-image"/>
           <view class="history-info">
             <text class="style-name">{{item.styleName}}</text>

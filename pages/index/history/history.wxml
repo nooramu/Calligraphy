@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="history-list">
+    <view class="history-item" 
+          wx:for="{{historyList}}" 
+          wx:key="id"
+          bindtap="viewDetail"
+          data-id="{{item.id}}"
+          data-item="{{item}}">
+      <image src="{{item.imagePath}}" mode="aspectFill" class="history-image"/>
+      <view class="history-info">
+        <text class="style-name">{{item.styleName}}</text>
+        <text class="analyze-time">{{item.analyzeTime}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 自定义弹窗 -->
+<view class="modal" wx:if="{{showModal}}">
+  <view class="modal-mask" bindtap="hideModal"></view>
+  <view class="modal-content">
+    <image src="{{currentItem.imagePath}}" mode="aspectFit" class="modal-image"/>
+    <view class="modal-info">
+      <view class="modal-title">识别结果</view>
+      <view class="modal-style">书法风格：{{currentItem.styleName}}</view>
+      <view class="modal-confidence">置信度：{{currentItem.confidence}}%</view>
+      <view class="modal-desc">{{currentItem.description}}</view>
+    </view>
+    <view class="modal-close" bindtap="hideModal">×</view>
+  </view>
+</view> 

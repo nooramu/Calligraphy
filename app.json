@@ -1,12 +1,21 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/history/history",
+    "pages/index/history-detail/history-detail",
     "pages/forum/forum",
     "pages/history/history",
     "pages/gallery/gallery",
     "pages/profile/profile",
     "pages/post-detail/post-detail",
-    "pages/post/create"
+    "pages/post/create",
+    "pages/profile/edit/edit",
+    "pages/profile/about/about",
+    "pages/profile/feedback/feedback",
+    "pages/profile/settings/settings",
+    "pages/profile/settings/password/password",
+    "pages/profile/collections/collections",
+    "pages/profile/posts/posts"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,23 +30,28 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "fontFamily": "STKaiti, 楷体, 华文楷体"
       },
       {
         "pagePath": "pages/history/history",
-        "text": "风格史"
+        "text": "风格史",
+        "fontFamily": "STKaiti, 楷体, 华文楷体"
       },
       {
         "pagePath": "pages/gallery/gallery",
-        "text": "作品库"
+        "text": "作品库",
+        "fontFamily": "STKaiti, 楷体, 华文楷体"
       },
       {
         "pagePath": "pages/forum/forum",
-        "text": "论坛"
+        "text": "论坛",
+        "fontFamily": "STKaiti, 楷体, 华文楷体"
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "我的"
+        "text": "我的",
+        "fontFamily": "STKaiti, 楷体, 华文楷体"
       }
     ]
   }

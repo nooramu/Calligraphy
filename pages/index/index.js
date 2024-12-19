@@ -66,20 +66,39 @@ Page({
 
   // 保存历史记录
   saveHistory(result) {
-    const newHistory = {
-      id: Date.now(),
-      imagePath: this.data.tempImagePath,
-      styleName: result.styleName,
-      analyzeTime: new Date().toLocaleString()
-    };
-
-    const historyList = [newHistory, ...this.data.historyList];
-    this.setData({
-      historyList: historyList.slice(0, 10) // 只保留最近10条记录
-    });
-
-    // 保存到本地存储
-    wx.setStorageSync('historyList', this.data.historyList);
+    wx.saveFile({
+      tempFilePath: this.data.tempImagePath,
+      success: (res) => {
+        console.log('原始临时路径：', this.data.tempImagePath)
+        console.log('图片保存成功，永久路径：', res.savedFilePath)
+        
+        const historyList = wx.getStorageSync('historyList') || []
+        const newRecord = {
+          id: Date.now().toString(),
+          imagePath: res.savedFilePath,
+          styleName: result.styleName,
+          confidence: result.confidence || 0,
+          description: result.description || '暂无描述',
+          analyzeTime: new Date().toLocaleString()
+        }
+        
+        console.log('新建的历史记录：', newRecord)
+        historyList.unshift(newRecord)
+        wx.setStorageSync('historyList', historyList)
+        
+        // 更新页面显示
+        this.setData({
+          historyList: historyList
+        })
+      },
+      fail: (error) => {
+        console.error('保存图片失败：', error)
+        wx.showToast({
+          title: '保存图片失败',
+          icon: 'none'
+        })
+      }
+    })
   },
 
   // 加载历史记录

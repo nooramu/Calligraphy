@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="feedback-card">
+    <view class="form-item">
+      <text class="label">反馈内容</text>
+      <textarea class="content" 
+                placeholder="请详细描述您的问题或建议..."
+                maxlength="500"
+                bindinput="onContentInput"
+                value="{{content}}"/>
+      <text class="word-count">{{content.length}}/500</text>
+    </view>
+
+    <view class="form-item">
+      <text class="label">联系方式（选填）</text>
+      <input class="contact" 
+             placeholder="请留下您的手机号或邮箱"
+             bindinput="onContactInput"
+             value="{{contact}}"/>
+    </view>
+  </view>
+
+  <button class="submit-btn" bindtap="submitFeedback">提交反馈</button>
+</view> 

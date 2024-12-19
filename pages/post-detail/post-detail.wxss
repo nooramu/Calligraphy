@@ -3,6 +3,8 @@
   background: #fff;
   min-height: 100vh;
   padding-bottom: 120rpx;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 /* 帖子标题区域 */
@@ -20,10 +22,7 @@
 /* 用户信息区域 */
 .user-info {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   padding: 0 40rpx;
-  margin: 0 -40rpx;
   padding-bottom: 12rpx;
   margin-bottom: 12rpx;
   border-bottom: 1rpx solid #eee;
@@ -150,9 +149,7 @@
 /* 其他样式保持不变... */
 .interactions {
   display: flex;
-  justify-content: flex-start;
   padding: 20rpx 40rpx;
-  margin: 0 -40rpx;
   border-bottom: 1rpx solid #eee;
   gap: 100rpx;
   padding-left: 80rpx;

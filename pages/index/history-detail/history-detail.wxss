@@ -1,0 +1,49 @@
+.container {
+  padding: 30rpx;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.detail-card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.detail-image {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 8rpx;
+  margin-bottom: 24rpx;
+}
+
+.detail-info {
+  padding: 0 16rpx;
+}
+
+.style-name {
+  font-size: 36rpx;
+  color: #2C3D4F;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.analyze-time {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 16rpx;
+}
+
+.confidence {
+  font-size: 28rpx;
+  color: #8B4513;
+  margin-bottom: 24rpx;
+}
+
+.description {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+  text-align: justify;
+} 

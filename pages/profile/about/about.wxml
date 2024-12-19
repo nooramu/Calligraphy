@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="about-card">
+    <view class="header">
+      <image class="logo" src="/assets/images/logo.png" mode="aspectFit"/>
+      <view class="title-section">
+        <text class="app-name">书法风格识别</text>
+        <text class="version">Version 1.0.0</text>
+      </view>
+    </view>
+    
+    <view class="divider"></view>
+    
+    <view class="section">
+      <text class="section-title">关于我们</text>
+      <text class="section-content">我们致力于通过人工智能技术，帮助用户快速识别和了解不同的书法风格，让传统书法艺术在数字时代焕发新的生机。</text>
+    </view>
+    
+    <view class="section">
+      <text class="section-title">联系我们</text>
+      <text class="section-content">邮箱：contact@calligraphy.com</text>
+      <text class="section-content">微信公众号：书法风格识别</text>
+    </view>
+  </view>
+</view> 
