@@ -21,7 +21,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "书法风格识别",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#999999",
@@ -30,8 +31,7 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
-        "fontFamily": "STKaiti, 楷体, 华文楷体"
+        "text": "首页"
       },
       {
         "pagePath": "pages/history/history",
@@ -50,9 +50,11 @@
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "我的",
-        "fontFamily": "STKaiti, 楷体, 华文楷体"
+        "text": "我的"
       }
     ]
+  },
+  "usingComponents": {
+    "upload-icon": "./components/upload-icon/upload-icon"
   }
 }

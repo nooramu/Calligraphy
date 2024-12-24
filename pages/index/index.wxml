@@ -1,27 +1,26 @@
 <!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
+<scroll-view class="page-container scrollarea" scroll-y type="list">
   <view class="container">
     <view class="upload-section">
       <view class="title">书法风格识别</view>
       <view class="upload-box" bindtap="chooseImage">
-        <image wx:if="{{tempImagePath}}" src="{{tempImagePath}}" mode="aspectFit" class="preview-image"/>
+        <image wx:if="{{imageUrl}}" src="{{imageUrl}}" mode="aspectFit" class="preview-image"/>
         <view wx:else class="upload-placeholder">
-          <image src="/assets/icons/upload.png" class="upload-icon"/>
+          <upload-icon class="upload-icon"/>
           <text>点击上传书法作品</text>
         </view>
       </view>
       
       <view class="button-group">
-        <button class="analyze-btn {{!tempImagePath ? 'disabled' : ''}}" 
-                bindtap="analyzeStyle" 
-                disabled="{{!tempImagePath}}">
+        <view class="analyze-btn {{!imageUrl ? 'disabled' : ''}}" 
+                bindtap="analyzeStyle">
           开始识别
-        </button>
-        <button class="clear-btn" 
+        </view>
+        <view class="clear-btn" 
                 bindtap="clearResult" 
-                wx:if="{{tempImagePath || recognitionResult}}">
+                wx:if="{{imageUrl || recognitionResult}}">
           清除
-        </button>
+        </view>
       </view>
 
       <!-- 识别结果展示区域 -->

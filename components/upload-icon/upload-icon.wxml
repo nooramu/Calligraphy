@@ -1,0 +1,6 @@
+<view class="upload-icon">
+  <view class="icon-inner">
+    <view class="plus-horizontal"></view>
+    <view class="plus-vertical"></view>
+  </view>
+</view> 

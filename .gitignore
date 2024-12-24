@@ -12,3 +12,21 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 微信开发者工具
+.DS_Store
+miniprogram_npm/
+.idea/
+.vscode/
+project.private.config.json
+
+# 上传文件目录
+server/shufa_recognition/uploads/
+
+# 日志文件
+*.log
